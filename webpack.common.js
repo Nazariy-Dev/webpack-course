@@ -1,5 +1,6 @@
 const path = require("path")
-var HtmlWebpackPlugin = require ('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const { default: test } = require("node:test");
 
 module.exports = {
     entry: "./src/index.js",
@@ -15,7 +16,19 @@ module.exports = {
                     "css-loader",  // 2. Turns css into commonJS
                     "sass-loader"  // 1. Turns sass into css
                 ]
-            }
+            },
+            {
+                test: /\.html$/,
+                use: ["html-loader"]
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]'
+                  }
+          
+            },
         ]
     },
 }
