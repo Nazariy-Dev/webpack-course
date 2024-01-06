@@ -3,7 +3,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const { default: test } = require("node:test");
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: {
+        mane: "./src/index.js",
+        vendor: "./src/vendor.js"
+    },
     plugins: [new HtmlWebpackPlugin({
         template: "./src/template.html"
     })],
